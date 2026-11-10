@@ -1,0 +1,10 @@
+__pycache__/
+.pytest_cache/
+.venv/
+.env
+output/
+data/raw/
+data/synthetic_retail_demo.csv
+.DS_Store
+*.pem
+*.key

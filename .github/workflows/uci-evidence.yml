@@ -1,0 +1,50 @@
+name: Analyze official UCI Online Retail source
+on:
+  push:
+    paths:
+      - '.github/workflows/uci-evidence.yml'
+      - 'scripts/publish_uci_evidence.py'
+      - 'scripts/download_uci.py'
+      - 'analysis/pipeline.py'
+      - 'requirements.txt'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  uci-analysis:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Download official UCI source
+        run: python scripts/download_uci.py
+      - name: Analyze the real dataset
+        run: python analysis/pipeline.py --input "data/raw/Online Retail.xlsx" --out output/uci
+      - name: Verify source row count and prepare published aggregates
+        run: |
+          python scripts/publish_uci_evidence.py \
+            --outdir output/uci \
+            --raw-file "data/raw/Online Retail.xlsx" \
+            --destination results/uci \
+            --expected-rows 541909
+      - name: Save verified source-derived reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: verified-public-uci-analytics
+          path: results/uci/
+          if-no-files-found: error
+      - name: Publish aggregate evidence without source rows
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add results/uci/
+          if ! git diff --cached --quiet; then
+            git commit -m "data: publish verified aggregate UCI retail analysis"
+            git push origin "HEAD:$GITHUB_REF_NAME"
+          fi

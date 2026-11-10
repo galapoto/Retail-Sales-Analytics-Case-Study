@@ -1,37 +1,27 @@
-# Build provenance and verification
+# Source, implementation and verification evidence
 
-**Status updated:** 10 November 2026.
+**Last verified:** 10 November 2026. **Public repository:** https://github.com/galapoto/Retail-Sales-Analytics-Case-Study
 
-## Implementation scope
+## Verified deployment results
 
-- NEW analysis/pipeline.py: input validation, classification, quality audit, KPI calculations, Pandas/SQLite cross-check and chart/CSV exports.
-- NEW scripts/make_demo.py: deterministic synthetic generator with intentional duplicate source rows.
-- NEW scripts/download_uci.py: UCI archive downloader, intentionally saving source data outside version control.
-- NEW tests/test_pipeline.py: five automated tests including end-to-end generation and SQL/Pandas reconciliation.
-- NEW analysis/retail_case_study.R: optional R verification; execution has not been verified.
-- NEW analysis/sql_checks.sql: example manual SQL checks.
-- NEW dashboard/POWER_BI_MODEL.md: measure/schema guidance; a PBIX is not included.
-- NEW preview/retail_demo_dashboard.svg: recruiter preview generated from synthetic fixture output, not official source findings.
+- **Published code:** end-to-end data cleansing, KPI calculation, SQL cross-check, charts and reporting.
+- **Python unit tests:** 5/5 passed locally and on GitHub Actions.
+- **Official source analysis:** GitHub Actions run [42759973718](https://github.com/galapoto/Retail-Sales-Analytics-Case-Study/actions/runs/42759973718) completed successfully.
+- **Real source:** 541,909 transaction rows, source SHA-256 `43465a06f2ccf7c8b5bd2892bc7defb52f97487934fe93b16ae4c3936424676d`.
+- **SQL verification:** 19,960 unique sale orders and £10,642,110.80 gross sales reconciled with Pandas.
+- **Public evidence:** [results/uci/README.md](../results/uci/README.md), source provenance JSON, audit JSON, monthly/country/product CSV tables and PNG charts.
+- **Source details:** Daqing Chen, 2015, UCI Online Retail, CC BY 4.0, DOI 10.24432/C5BW33.
 
-## Source/reuse provenance
+## Exact code provenance
 
-**COPIED: none.** The target GitHub repository was initially empty. No third-party project source code was imported. The original pipeline was written as a self-contained portfolio case study.
+- **COPIED:** none. No third-party project source code imported; the target repository started empty.
+- **NEW:** analysis/pipeline.py, tests/test_pipeline.py, scripts/make_demo.py, scripts/download_uci.py, scripts/publish_uci_evidence.py, scripts/make_preview.py, analysis/sql_checks.sql, analysis/retail_case_study.R and all code CI.
+- **ADAPTED:** methodology from Google's publicly described Ask → Prepare → Process → Analyze → Share → Act capstone workflow.
+- **INTEGRATED:** authoritative UCI source downloaded at workflow execution; only aggregated outputs published. The original 541,909-row source remains out of version control.
+- **LOCALLY TESTED:** Python test suite PASS. Evidence-publishing script passed a synthetic-input smoke test with explicitly overridden expected row count.
+- **CI VERIFIED:** quality test workflow PASS and separate official UCI-data workflow PASS.
+- **NOT VERIFIED:** R execution, native Power BI PBIX/service deployment, accuracy of source descriptions beyond the provided fields, or live production retailer impact.
 
-**ADAPTED:** Google Data Analytics capstone process (Ask, Prepare, Process, Analyze, Share, Act), with newly written Python/SQL/R implementations.
+## Application disclosure
 
-**EXTERNAL DATA REFERENCE:** Daqing Chen (2015), UCI Online Retail, CC BY 4.0, DOI 10.24432/C5BW33. No raw source data or Coursera proprietary starter datasets are committed.
-
-**INTEGRATED:** GitHub Actions runs unit tests and regenerates synthetic reports for verification.
-
-## Verification status
-
-- Python unit tests: **5/5 PASS locally** on 10 November 2026.
-- GitHub Actions: check the repository's Actions tab for the actual result of this commit; do not treat a workflow file alone as a passing check.
-- Full historical 541,909-row UCI run: **NOT VERIFIED**.
-- Native Power BI dashboard: **NOT IMPLEMENTED**.
-- Optional R execution: **NOT VERIFIED**.
-- Original Coursera capstone submission: **NOT CLAIMED**. This is a new independent portfolio project developed after the certificate.
-
-## Integrity rule
-
-The example visual and small demo numbers are **synthetic**. Never present them as actual commercial findings, a HOK-Elanto dataset, a production report or independently validated source-specific conclusions.
+This is a new, independently built post-certificate portfolio project; it was not submitted to Coursera as an assessed project. Real UCI-derived findings are distinct from the synthetic demo. None of the figures belong to HOK-Elanto, VAKEHYVA, or any other employer.

@@ -1,63 +1,77 @@
 # Retail Sales & Returns — Google Data Analytics Case Study
 
-**Ask → Prepare → Process → Analyze → Share → Act** | Python · SQL · R · dashboards · data quality
+**Ask → Prepare → Process → Analyze → Share → Act** | Python · Pandas · SQL · R · data quality · Power BI modelling
 
-> **Status:** Reproducible, locally tested case-study pipeline with a synthetic demonstration. The full 541,909-row UCI dataset can be retrieved using the included downloader when internet access is available. **Synthetic demonstration figures are not real dataset findings.**
+[![Python tests](https://github.com/galapoto/Retail-Sales-Analytics-Case-Study/actions/workflows/quality.yml/badge.svg)](https://github.com/galapoto/Retail-Sales-Analytics-Case-Study/actions/workflows/quality.yml)
+[![Real UCI analysis](https://github.com/galapoto/Retail-Sales-Analytics-Case-Study/actions/workflows/uci-evidence.yml/badge.svg)](https://github.com/galapoto/Retail-Sales-Analytics-Case-Study/actions/workflows/uci-evidence.yml)
 
-![Retail analytics — synthetic demonstration](preview/retail_demo_dashboard.svg)
+**Verified with the full public dataset on 10 November 2026.** This is an **independent portfolio case study built after completing the Google Data Analytics Professional Certificate**, not a claim that Coursera assessed these exact files.
 
-## The business question
+## Business question
 
-A retail analyst is asked to explain historic monthly sales patterns, leading markets and products, and data-quality risks in transaction exports. Can management trust the raw data? What cannot be inferred from it?
+A revenue and operations team needs to understand historic retail sales patterns, leading products and markets, and the quality of the source data. Which results can be trusted, and what further information would be necessary for a decision?
 
-## What this repository demonstrates
+## Real-data findings
 
-- Clear metric definitions for gross sales, orders, average order value, and cancellation-line value.
-- Data cleaning and quality checks: types, missing data, exact duplicates, and cancellations.
-- Python/Pandas and SQLite reconciliation of key financial KPIs.
-- Reproducible CSV reports, visualizations, unit tests, and GitHub Actions CI.
-- Optional base R verification and a Power BI model blueprint (not a claim of a deployed PBIX).
-- Business-ready conclusions that separate verified findings from limitations.
+<details open><summary>Source-verified historical data analysis</summary>
 
-## Data source and attribution
+| Measure | Result | Definition |
+|---|---:|---|
+| Source transaction lines | **541,909** | Official UCI Online Retail Excel file |
+| Valid sale lines | **524,878** | After cleaning and exclusions |
+| Distinct sale orders | **19,960** | Unique non-cancelled invoice IDs |
+| Gross sales | **£10,642,110.80** | Positive sale lines before costs/returns |
+| Average order value | **£533.17** | Gross sales / orders |
+| Cancellation line value | **£893,979.73** | Tracked separately, not assumed net refunds |
+| Exact duplicate rows | **5,268** | Removed before metric calculations |
+| Raw rows missing CustomerID | **135,080** | Flagged rather than invented |
 
-**Daqing Chen (2015), UCI Online Retail**, DOI [10.24432/C5BW33](https://doi.org/10.24432/C5BW33), [UCI dataset](https://archive.ics.uci.edu/dataset/352/online+retail), CC BY 4.0. The public dataset describes **541,909 historical transaction lines from a UK non-store retailer, 2010–2011**, not HOK-Elanto or any other Finnish company.
+The complete [source-verified executive report](results/uci/README.md) includes the data-quality audit, original-file SHA-256, chart exports, and downloadable aggregate tables. **Pandas and independent SQLite checks agree.**
 
-Source files are fetched into the Git-ignored `data/raw/` folder and are not redistributed here.
+</details>
 
-## Quick start
+![Monthly gross sales — actual UCI historical source](results/uci/charts/monthly_sales.png)
+
+The figures describe a historical UK non-store retailer (2010–2011). They **do not** measure HOK-Elanto, Finnish grocery sales, current consumer behavior or profitability.
+
+## Implementation
+
+- [End-to-end Python pipeline](analysis/pipeline.py): Excel/CSV import, schema validation, deduplication, date/type cleaning, cancellation classification and KPI reports.
+- [SQL reconciliation](analysis/sql_checks.sql): count distinct invoices and reconcile gross sales using independent SQL.
+- [Automated tests](tests/test_pipeline.py): five regression tests, including end-to-end outputs and SQL/Pandas matching.
+- [Real source run](.github/workflows/uci-evidence.yml): downloads official UCI Excel, requires 541,909 source rows, validates metrics and publishes **aggregate results only**.
+- [Optional R analysis](analysis/retail_case_study.R) and [Power BI measures](dashboard/POWER_BI_MODEL.md): R not executed; native Power BI .pbix not delivered.
+- [Synthetic demonstration](preview/retail_demo_dashboard.svg): separately labelled training fixture, not actual dataset evidence.
+
+## Reproduce the analysis
 
 ```bash
 python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
-python scripts/make_demo.py
-python analysis/pipeline.py --input data/synthetic_retail_demo.csv --out output/demo
+python scripts/download_uci.py
+python analysis/pipeline.py --input "data/raw/Online Retail.xlsx" --out output/uci
 python -m unittest discover -s tests -v
 ```
 
-For real public data:
+For an offline **synthetic** demonstration:
 
 ```bash
-python scripts/download_uci.py
-python analysis/pipeline.py --input "data/raw/Online Retail.xlsx" --out output/uci
+python scripts/make_demo.py
+python analysis/pipeline.py --input data/synthetic_retail_demo.csv --out output/demo
 ```
 
-Generated outputs: `quality_and_kpis.json`, `monthly_sales.csv`, `country_sales.csv`, `top20_products.csv` and two PNG charts. No cloud keys or paid APIs are needed.
+## Documentation for reviewers
 
-## Portfolio reading guide
+[Business definitions](docs/DATA_DICTIONARY.md) · [Google capstone mapping](docs/GOOGLE_CAPSTONE_MAPPING.md) · [Reproducibility](docs/REPRODUCIBILITY.md) · [Evidence / provenance](docs/PROJECT_EVIDENCE.md) · [Finnish management summary](docs/JOHDON_YHTEENVETO_FI.md)
 
-1. [Business question and data dictionary](docs/DATA_DICTIONARY.md)
-2. [Google capstone mapping](docs/GOOGLE_CAPSTONE_MAPPING.md)
-3. [Reproducibility and evidence boundaries](docs/REPRODUCIBILITY.md)
-4. [Data pipeline](analysis/pipeline.py) and [tests](tests/test_pipeline.py)
-5. [Power BI model blueprint](dashboard/POWER_BI_MODEL.md)
-6. [Finnish management summary](docs/JOHDON_YHTEENVETO_FI.md)
+**Source and licence:** Daqing Chen (2015), *Online Retail*, UCI Machine Learning Repository, DOI [10.24432/C5BW33](https://doi.org/10.24432/C5BW33), [dataset page](https://archive.ics.uci.edu/dataset/352/online+retail), CC BY 4.0. Original record-level data is downloaded locally, excluded from Git, and not redistributed here.
 
-## Evidence integrity
+### Integrity and limitations
 
-This is a **new independent case study developed after completing the Google Data Analytics Professional Certificate in 2025**; it was not submitted to Coursera as that certificate's assessed work. The local Python tests passed (5/5) before publication. The official full UCI dataset analysis and a deployed Power BI report **remain to be independently verified**. The demo visual is synthetic and is not a measurement of the UCI dataset.
+- Gross sales are **not** net income, realized profit, or verified revenue net of all refunds.
+- Invoice cancellations cannot be matched to original orders from the available fields alone.
+- Missing customer IDs limit individual-level customer analysis.
+- This is a descriptive, historical case study; causal commercial recommendations need further evidence.
 
-### Provenance
-
-**COPIED:** none. Pipeline, tests and documentation were authored for this portfolio. **ADAPTED:** analytical framework from Google's published capstone phases. **DATA:** attributed external UCI Online Retail dataset under CC BY 4.0, downloaded independently by the user when running the project. **NOT VERIFIED:** full 541,909-row source run, deployed PBIX, optional R results.
+**Code provenance:** COPIED: none from outside repositories. NEW: original analysis code, validation, reporting, tests and CI. ADAPTED: Google's published capstone methodology. INTEGRATED: UCI public source, with attribution. NOT VERIFIED: native Power BI deployment, optional R validation and performance conclusions for any current retailer.

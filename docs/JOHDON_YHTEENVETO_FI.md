@@ -1,26 +1,35 @@
-# Liiketoiminta-analyysi: myynti, peruutukset ja datan laatu
+# Liiketoiminta-analyysi: vähittäiskaupan myynti, peruutukset ja datan laatu
 
-**Aineisto:** UCI Online Retail, Iso-Britannia 2010–2011 (Daqing Chen, 2015), CC BY 4.0.
+**Aineisto:** UCI Online Retail, Iso-Britannia 2010–2011, Chen (2015), CC BY 4.0. **Analyysi varmennettu:** 10.11.2026 GitHub Actionsissa alkuperäisellä 541 909 rivin aineistolla.
 
-**Toteutustila:** analyysiputki on toteutettu ja testattu synteettisellä aineistolla. Todellisesta UCI-aineistosta ei esitetä vielä varmistettuja tuloksia.
+## Tavoite
 
-## Liiketoimintaongelma
+Miten yritys voi seurata historiallista tilausmyyntiä, tunnistaa merkittäviä markkinoita ja tuotteita sekä varmistaa, että puutteelliset lähtötiedot eivät johda vääriin päätöksiin?
 
-Miten johto voi seurata tilausmyynnin kehitystä, tunnistaa tärkeimmät tuotteet ja markkinat sekä varmistaa, ettei huonolaatuinen data johda virheellisiin päätelmiin?
+## Todelliseen lähdedataan perustuvat tulokset
 
-## Käytetyt menetelmät
+| Mittari | Tulos |
+|---|---:|
+| Lähdeaineiston tapahtumarivit | **541 909** |
+| Myyntirivit laaduntarkastusten jälkeen | **524 878** |
+| Yksilölliset myyntilaskut | **19 960** |
+| Bruttomyynti ennen palautuksia ja kustannuksia | **10 642 110,80 £** |
+| Keskimääräinen tilausarvo | **533,17 £** |
+| Peruutusrivien laskennallinen arvo | **893 979,73 £** |
+| Täsmälleen päällekkäiset rivit | **5 268** |
+| Asiakastunnuksen puuttuminen lähderiveiltä | **135 080** |
 
-Excel- ja CSV-aineistojen luku, tietotyyppien tarkistus, duplikaattien käsittely, puuttuvien tunnisteiden raportointi, myynti- ja peruutusrivien erottelu, aikajakso- ja maakohtainen ryhmittely, Power BI -mittarimalli sekä pandas-lukujen riippumaton SQL-vertailu. Kaikki raportit ja kuviot tuotetaan samalla ajolla.
+Mittarit on täsmäytetty Pandas-laskennan ja erillisen SQL-kyselyn välillä. [Lähdetulokset ja kuviot](../results/uci/README.md).
 
-## Johtopäätökset ja suositukset
+## Johtopäätökset
 
-1. **Luotettavuus ennen raportointinopeutta.** Virheelliset päivämäärät, duplikaatit ja puuttuvat asiakastunnisteet on tuotava näkyviin ennen tulosten tulkintaa.
-2. **Erota myynti, peruutukset ja kannattavuus.** Laskujen peruutukset eivät automaattisesti vastaa samaa kuin toteutuneet hyvitykset; hankintakustannusten puuttuessa katetta ei voi laskea.
-3. **Tee päätökset yhdessä liiketoiminnan kanssa.** Kun lähdedata on validoitu, voidaan tutkia tuotekohtaisia ja maakohtaisia poikkeamia ja tarkistaa niiden vaikutus toimintaan.
-4. **Rakenna jatkuva laadunvalvonta.** Sovitaan dataomistaja, mittarien määritelmät, päivityssykli ja selkeä virheiden käsittely.
+1. **Datan laatu vaikuttaa raportointiin.** Duplikaatit ja puuttuvat asiakastunnisteet on käsiteltävä näkyvästi ennen raportointia. Asiakastunnukseton rivi ei automaattisesti vastaa uutta asiakasta.
+2. **Bruttomyynti ei ole voittoa.** Aineistossa ei ole hankintakustannuksia tai käyttökatetta. Peruutuksia ei voi varmasti kohdistaa alkuperäisiin laskuihin, joten niitä raportoidaan erillisenä mittarina.
+3. **Raportin on oltava toistettava.** Python-puhdistus, SQL-täsmäytys ja samaan ajoon liitetty automaattinen raportin muodostus vähentävät käsin laskettujen lukujen riskiä.
+4. **Analytiikan hyöty syntyy tulkinnasta.** Maa- ja tuotekohtaiset poikkeamat ovat hyödyllisiä tarkistuskohteita, mutta kuvio ei vielä todista syy-seuraussuhdetta.
 
-## Seuraava tarkistuspiste
+## Ehdotetut jatkotoimet
 
-Aja analyysi alkuperäisellä 541 909 tapahtumarivin UCI-aineistolla, dokumentoi lähteen versio ja päivitä tämä yhteenveto oikeilla havainnoilla. Tämän jälkeen voidaan toteuttaa Power BI -raportti, jonka mittarit täsmäytetään SQL-tuloksiin.
+Rakenna Power BI -raportin ensimmäinen versio eriytetyillä myynti- ja peruutusmittareilla, dokumentoi tietojen omistaja ja päivityssykli, sekä varmista mittarit SQL-kyselyillä ennen johdon päätöksiä.
 
-**Huom.:** Tämä on Google Data Analytics -opintojen jälkeen itsenäisesti rakennettu portfolioesimerkki, ei työnantajan luottamuksellisia tietoja.
+**Rajaus:** Tiedot kuvaavat historiallista brittiläistä verkkokauppaa, eivät HOK-Elantoa tai Suomen nykyisiä markkinoita. Tämä on Google Data Analytics -sertifikaatin jälkeen toteutettu itsenäinen portfolioharjoitus.

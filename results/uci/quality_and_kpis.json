@@ -1,0 +1,36 @@
+{
+  "source": "Online Retail.xlsx",
+  "audit": {
+    "raw_rows": 541909,
+    "exact_duplicate_rows": 5268,
+    "missing_customer_id_rows": 135080,
+    "missing_description_rows": 1454,
+    "invalid_dates": 0,
+    "deduplicated_rows": 536641,
+    "valid_sale_rows": 524878,
+    "cancellation_rows": 9251,
+    "other_non_sale_rows": 2510,
+    "dropped_invalid_rows": 2,
+    "unknown_customer_sales_rows": 132186
+  },
+  "kpis": {
+    "sale_lines": 524878,
+    "orders": 19960,
+    "gross_sales_gbp": 10642110.8,
+    "cancellation_line_value_gbp": 893979.73,
+    "average_order_value_gbp": 533.17,
+    "countries": 38,
+    "identified_customers": 4338
+  },
+  "sql_check": {
+    "sql_distinct_orders": 19960,
+    "sql_gross_sales_gbp": 10642110.8,
+    "matched": true
+  },
+  "data_limitations": [
+    "No cost-of-goods data: not a profit report",
+    "Cancellations are separate, cannot safely match all to source sales",
+    "CustomerID absent on some rows; customer counts exclude missing IDs",
+    "Historical UK non-store retailer; not representative of Finnish grocery shoppers"
+  ]
+}

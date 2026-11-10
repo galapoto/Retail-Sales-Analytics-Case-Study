@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 780" role="img" aria-label="Synthetic retail sales case study dashboard with four KPI cards, monthly sales line, and country gross sales bars">
+<rect width="1280" height="780" fill="#0c1727"/>
+<text x="56" y="66" font-size="16" font-family="Arial, sans-serif" letter-spacing="2" font-weight="700" fill="#87aace">RETAIL INTELLIGENCE  /  ANALYST PORTFOLIO</text>
+<text x="56" y="123" font-size="43" font-family="Arial, sans-serif" font-weight="700" fill="#ffffff">Sales, returns &amp; data quality</text>
+<rect x="827" y="25" width="397" height="48" rx="10" fill="#3a2c17" stroke="#996b28"/>
+<text x="1026" y="55" font-size="14" font-family="Arial, sans-serif" fill="#ffd894" font-weight="700" text-anchor="middle">SYNTHETIC DEMO · NOT UCI RESULTS</text>
+<g font-family="Arial, sans-serif"><rect x="56" y="181" width="286" height="124" rx="16" fill="#20334b" stroke="#38526e"/><text x="78" y="223" font-size="15" font-weight="700" fill="#a9bfd5">GROSS SALES</text><text x="78" y="277" font-size="35" font-weight="700" fill="#fff">£163,379</text>
+<rect x="360" y="181" width="286" height="124" rx="16" fill="#20334b" stroke="#38526e"/><text x="382" y="223" font-size="15" font-weight="700" fill="#a9bfd5">ORDERS</text><text x="382" y="277" font-size="35" font-weight="700" fill="#fff">2,000</text>
+<rect x="664" y="181" width="286" height="124" rx="16" fill="#20334b" stroke="#38526e"/><text x="686" y="223" font-size="15" font-weight="700" fill="#a9bfd5">AVERAGE ORDER</text><text x="686" y="277" font-size="35" font-weight="700" fill="#fff">£81.69</text>
+<rect x="968" y="181" width="286" height="124" rx="16" fill="#20334b" stroke="#38526e"/><text x="990" y="223" font-size="15" font-weight="700" fill="#a9bfd5">CANCELLATION VALUE</text><text x="990" y="277" font-size="35" font-weight="700" fill="#fff">£2,604</text></g>
+<rect x="56" y="337" width="564" height="349" rx="18" fill="#192a3f" stroke="#304961"/>
+<rect x="645" y="337" width="579" height="349" rx="18" fill="#192a3f" stroke="#304961"/>
+<text x="81" y="375" fill="#ffffff" font-family="Arial, sans-serif" font-weight="700" font-size="21">Monthly gross sales</text>
+<text x="81" y="399" fill="#90acc5" font-family="Arial, sans-serif" font-size="13">GBP · thousands · synthetic 2011</text>
+<g stroke="#3b5368" stroke-width="1"><line x1="83" y1="450" x2="592" y2="450"/><line x1="83" y1="500" x2="592" y2="500"/><line x1="83" y1="550" x2="592" y2="550"/><line x1="83" y1="600" x2="592" y2="600"/></g>
+<polyline fill="none" stroke="#63e6d0" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" points="90.0,487.1 133.0,515.8 176.0,509.3 219.0,525.3 262.0,531.8 305.0,448.6 348.0,509.7 391.0,526.4 434.0,435.0 477.0,505.6 520.0,543.0 563.0,518.0"/>
+<circle cx="90.0" cy="487.1" r="5" fill="#63e6d0"/>
+<circle cx="133.0" cy="515.8" r="5" fill="#63e6d0"/>
+<circle cx="176.0" cy="509.3" r="5" fill="#63e6d0"/>
+<circle cx="219.0" cy="525.3" r="5" fill="#63e6d0"/>
+<circle cx="262.0" cy="531.8" r="5" fill="#63e6d0"/>
+<circle cx="305.0" cy="448.6" r="5" fill="#63e6d0"/>
+<circle cx="348.0" cy="509.7" r="5" fill="#63e6d0"/>
+<circle cx="391.0" cy="526.4" r="5" fill="#63e6d0"/>
+<circle cx="434.0" cy="435.0" r="5" fill="#63e6d0"/>
+<circle cx="477.0" cy="505.6" r="5" fill="#63e6d0"/>
+<circle cx="520.0" cy="543.0" r="5" fill="#63e6d0"/>
+<circle cx="563.0" cy="518.0" r="5" fill="#63e6d0"/>
+<g font-family="Arial, sans-serif"><text x="90" y="620" fill="#a5bbce" font-size="13" text-anchor="middle">01</text>
+<text x="133" y="620" fill="#a5bbce" font-size="13" text-anchor="middle">02</text>
+<text x="176" y="620" fill="#a5bbce" font-size="13" text-anchor="middle">03</text>
+<text x="219" y="620" fill="#a5bbce" font-size="13" text-anchor="middle">04</text>
+<text x="262" y="620" fill="#a5bbce" font-size="13" text-anchor="middle">05</text>
+<text x="305" y="620" fill="#a5bbce" font-size="13" text-anchor="middle">06</text>
+<text x="348" y="620" fill="#a5bbce" font-size="13" text-anchor="middle">07</text>
+<text x="391" y="620" fill="#a5bbce" font-size="13" text-anchor="middle">08</text>
+<text x="434" y="620" fill="#a5bbce" font-size="13" text-anchor="middle">09</text>
+<text x="477" y="620" fill="#a5bbce" font-size="13" text-anchor="middle">10</text>
+<text x="520" y="620" fill="#a5bbce" font-size="13" text-anchor="middle">11</text>
+<text x="563" y="620" fill="#a5bbce" font-size="13" text-anchor="middle">12</text></g>
+<text x="680" y="375" fill="#ffffff" font-family="Arial, sans-serif" font-weight="700" font-size="21">Gross sales by country</text>
+<text x="680" y="399" fill="#90acc5" font-family="Arial, sans-serif" font-size="13">GBP · descriptive grouping</text>
+<g font-family="Arial, sans-serif"><text x="680" y="426" fill="#d2deee" font-size="15">United Kingdom</text><rect x="823" y="408" width="330.0" height="25" rx="7" fill="#5ba8fb"/><text x="1173" y="426" fill="#c5d6e8" font-size="14" text-anchor="end">£114,042</text>
+<text x="680" y="471" fill="#d2deee" font-size="15">Germany</text><rect x="823" y="453" width="53.2" height="25" rx="7" fill="#5ba8fb"/><text x="1173" y="471" fill="#c5d6e8" font-size="14" text-anchor="end">£18,383</text>
+<text x="680" y="516" fill="#d2deee" font-size="15">France</text><rect x="823" y="498" width="39.4" height="25" rx="7" fill="#5ba8fb"/><text x="1173" y="516" fill="#c5d6e8" font-size="14" text-anchor="end">£13,609</text>
+<text x="680" y="561" fill="#d2deee" font-size="15">EIRE</text><rect x="823" y="543" width="34.9" height="25" rx="7" fill="#5ba8fb"/><text x="1173" y="561" fill="#c5d6e8" font-size="14" text-anchor="end">£12,059</text>
+<text x="680" y="606" fill="#d2deee" font-size="15">Finland</text><rect x="823" y="588" width="15.3" height="25" rx="7" fill="#5ba8fb"/><text x="1173" y="606" fill="#c5d6e8" font-size="14" text-anchor="end">£5,286</text></g>
+<text x="56" y="730" fill="#d6e6f4" font-family="Arial, sans-serif" font-size="15">Pipeline controls: duplicate checks · valid sales separated from cancelled lines · SQLite reconciliation</text>
+<text x="56" y="755" fill="#8da7bf" font-family="Arial, sans-serif" font-size="13">Illustrative values from reproducible seed-42 fixture. These metrics are not findings from the real 541,909-row UCI dataset.</text>
+</svg>
